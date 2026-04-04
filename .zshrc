@@ -28,3 +28,5 @@ compinit
 export PATH=$PATH:~/Library/Android/sdk/platform-tools
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH="$PATH:/Library/TeX/texbin"
+
+bindkey -v

@@ -27,13 +27,41 @@ set splitright             " Open new windows right of the current window.
 
 set wrapscan               " Searches wrap around end-of-file.
 set report      =0         " Always report changed lines.
-set synmaxcol   =200       " Only highlight the first 200 columns.
+set synmaxcol   =3000      " Only highlight the first 200 columns.
+set history     =1000
 
-" --- True color (24-bit) support ---
-if !has('nvim') && $TERM ==# 'xterm-kitty'
-  let &t_8f = "\e[38;2;%lu;%lu;%lum"
-  let &t_8b = "\e[48;2;%lu;%lu;%lum"
-endif
+set undofile
+set undodir=$HOME/.vim/undo
 set background=dark
 
 set clipboard=unnamed
+set dir=$HOME/.vim/swap
+
+" Plugins
+call plug#begin()
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'iamcco/markdown-preview.nvim',  { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+call plug#end()
+
+" Keybinds for coc.nvim
+inoremap <silent><expr> <C-space> coc#refresh()
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+autocmd FileType html,css,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
