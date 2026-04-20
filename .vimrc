@@ -49,7 +49,7 @@ call plug#end()
 inoremap <silent><expr> <C-space> coc#refresh()
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
-"
+
 " Leader
 let mapleader = " "
 
