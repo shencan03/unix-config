@@ -49,7 +49,31 @@ call plug#end()
 inoremap <silent><expr> <C-space> coc#refresh()
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
-inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+"
+" Leader
+let mapleader = " "
+
+" Switch to next split
+nnoremap <leader>w <C-w>w
+
+" Open a file in a vertical split
+nnoremap <leader>fv :vert split<Space>
+
+" Move between splits
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
+" New tab
+nnoremap <leader>t :tabnew<CR>
+
+" Half-page jump and recenter
+nnoremap <leader>jj <C-d>zz
+nnoremap <leader>kk <C-u>zz
+
+" Use system clipboard for yank/delete/paste
+set clipboard=unnamedplusnoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
