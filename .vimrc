@@ -1,4 +1,7 @@
 set nocompatible
+set nowrap
+set autoread
+set termguicolors
 
 filetype plugin indent on
 syntax on
@@ -42,7 +45,9 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'mattn/emmet-vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-commentary'
+Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
 
@@ -86,3 +91,15 @@ nnoremap <leader>ft :tabnew<Space>
 " Half-page jump and recenter
 nnoremap <leader>jj <C-d>zz
 nnoremap <leader>kk <C-u>zz
+
+" Netrw side panel toggle
+let g:netrw_winsize = 25
+nnoremap <leader>e :Lexplore<CR>
+
+" Comment out selection in visual mode
+nmap <leader>/ gcc
+vmap <leader>/ gc
+
+" Ayu
+let ayucolor="dark"
+colorscheme ayu
