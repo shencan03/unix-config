@@ -1,5 +1,15 @@
 {
-    "suggest.autoTrigger": "none",
-    "diagnostic.enable": false,
-    "inlayHint.enable": false
+  "coc.preferences.formatOnSaveFiletypes": [
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "markdown"
+  ],
+  "semanticTokens.enable": true,
+  "semanticTokens.filetypes": ["*"]
 }

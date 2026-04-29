@@ -2,6 +2,8 @@ set nocompatible
 set nowrap
 set autoread
 set termguicolors
+set ignorecase
+set smartcase
 
 filetype plugin indent on
 syntax on
@@ -99,6 +101,9 @@ nnoremap <leader>e :Lexplore<CR>
 " Comment out selection in visual mode
 nmap <leader>/ gcc
 vmap <leader>/ gc
+
+" Show document symbols / outline
+nnoremap <leader>fo :CocList outline<CR>
 
 " Ayu
 let ayucolor="dark"
